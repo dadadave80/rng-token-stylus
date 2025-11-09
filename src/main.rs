@@ -6,5 +6,5 @@ pub extern "C" fn main() {}
 
 #[cfg(feature = "export-abi")]
 fn main() {
-    lottery_token::print_from_args();
+    rng_token::print_from_args();
 }
