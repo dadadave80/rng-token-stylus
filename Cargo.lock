@@ -1181,6 +1181,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "convert_case"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "baaaa0ecca5b51987b9423ccdc971514dd8b0bb7b4060b983d3664dad3f1f89f"
+dependencies = [
+ "unicode-segmentation",
+]
+
+[[package]]
 name = "core-foundation"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2815,6 +2824,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13dc2df351e3202783a1fe0d44375f7295ffb4049267b0f3018346dc122a1d94"
 
 [[package]]
+name = "lottery-token"
+version = "0.1.11"
+dependencies = [
+ "alloy-primitives",
+ "alloy-sol-types",
+ "dotenv",
+ "ethers",
+ "eyre",
+ "hex",
+ "openzeppelin-stylus",
+ "stylus-sdk",
+ "tokio",
+]
+
+[[package]]
 name = "lru"
 version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3067,8 +3091,7 @@ dependencies = [
 [[package]]
 name = "openzeppelin-stylus"
 version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cef3971d2d38f992397ed222826d213489f19a4b1936ac482fb5fa23926a4fd4"
+source = "git+https://github.com/OpenZeppelin/rust-contracts-stylus#01e6d116b1546375e50d5cf864ed9f39b31b98ab"
 dependencies = [
  "alloy-primitives",
  "alloy-sol-macro",
@@ -3083,10 +3106,9 @@ dependencies = [
 [[package]]
 name = "openzeppelin-stylus-proc"
 version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e070fcdfd2bc4cd6dcd32d61797467439277d7cc8e7eea73dd42c7ccd22b0e1d"
+source = "git+https://github.com/OpenZeppelin/rust-contracts-stylus#01e6d116b1546375e50d5cf864ed9f39b31b98ab"
 dependencies = [
- "convert_case",
+ "convert_case 0.8.0",
  "proc-macro2",
  "quote",
  "syn 2.0.101",
@@ -4410,21 +4432,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "stylus-hello-world"
-version = "0.1.11"
-dependencies = [
- "alloy-primitives",
- "alloy-sol-types",
- "dotenv",
- "ethers",
- "eyre",
- "hex",
- "openzeppelin-stylus",
- "stylus-sdk",
- "tokio",
-]
-
-[[package]]
 name = "stylus-proc"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4433,7 +4440,7 @@ dependencies = [
  "alloy-primitives",
  "alloy-sol-types",
  "cfg-if",
- "convert_case",
+ "convert_case 0.6.0",
  "lazy_static",
  "proc-macro-error",
  "proc-macro2",
