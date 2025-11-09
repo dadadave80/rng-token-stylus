@@ -29,7 +29,6 @@ sol_interface! {
     }
 }
 
-// Custom errors for our contract
 sol! {
     // Thrown when a randomness request fails
     #[derive(Debug)]
@@ -39,11 +38,11 @@ sol! {
     error OnlySupraRouter();
 }
 
-// Custom events for our contract
-// sol! {
-//     event MintRequested(uint256 indexed nonce, address indexed to);
-//     event Minted(uint256 indexed nonce, address indexed to, uint256 amount);
-// }
+// Custom events
+sol! {
+    event MintRequested(uint256 indexed nonce, address indexed to);
+    event Minted(uint256 indexed nonce, address indexed to, uint256 amount);
+}
 
 #[derive(SolidityError, Debug)]
 enum Error {
@@ -122,7 +121,7 @@ impl LotteryToken {
 
         self.mint_address.setter(nonce).set(to);
 
-        // log(self.vm(), MintRequested { nonce, to });
+        log(self.vm(), MintRequested { nonce, to });
 
         Ok(())
     }
@@ -141,14 +140,14 @@ impl LotteryToken {
 
         self.erc20._mint(receiver, mint_amount)?;
 
-        // log(
-        //     self.vm(),
-        //     Minted {
-        //         nonce,
-        //         to: receiver,
-        //         amount: mint_amount,
-        //     },
-        // );
+        log(
+            self.vm(),
+            Minted {
+                nonce,
+                to: receiver,
+                amount: mint_amount,
+            },
+        );
 
         Ok(())
     }
